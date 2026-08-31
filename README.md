@@ -10,3 +10,4 @@ perubahan terbaru
 ## Senarai Arahan
 # - git init / git add / git commit## Tarikh
 ## Diubah dari Main Home PC
+## Diubah dari salinan kedua
