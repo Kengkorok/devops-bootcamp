@@ -1,0 +1,12 @@
+[
+    [
+        "nat-0e85d5b0b1ebcf2d1",
+        "deleted"
+    ]
+]
+[
+    "52.74.208.177"
+]
+[
+    "643254130249.dkr.ecr.ap-southeast-1.amazonaws.com/devops-bootcamp/safwan"
+]
