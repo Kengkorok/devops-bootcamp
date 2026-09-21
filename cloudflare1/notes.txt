@@ -1,0 +1,3 @@
+nameserver: alaric.ns.cloudflare.com, zainab.ns.cloudflare.com
+portfolio: kengkorok-github-io.sa7one.workers.dev, www.profile.korokk.com
+private-site: private-test.korokk.com
