@@ -1,0 +1,4 @@
+elastic-ip: 47.130.206.5
+web: web.korokk.com (A record, proxied)
+tunnel: cloudflare2.korokk.com
+ssl-mode: Flexible
