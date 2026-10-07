@@ -1,0 +1,22 @@
+services:
+  profile:
+    image: redis
+    volumes:
+      - me:/data
+
+  server:
+    image: ghcr.io/infratify/arena-server
+
+
+  avatar2:
+    image: ghcr.io/infratify/arena-avatar
+    ports:
+      - "8088:8080"
+    environment:
+      NAME: Safwan
+      COLOR: red
+      SERVER: 13.212.241.150:3000
+    depends_on:
+      - profile
+volumes:
+  me:
