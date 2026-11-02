@@ -12,26 +12,41 @@ data "aws_iam_instance_profile" "my_ssm_profile" {
   name = "EC2-SSM-Role"
 }
 
-resource "aws_instance" "my_server_1" {
+module "my_server_public" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 6.0"
+
+  name                   = "tf-server-public"
   ami                    = data.aws_ami.my_ami.id
   instance_type          = "t3.micro"
   subnet_id              = module.my_vpc.public_subnets[0]
+  create_security_group  = false
   vpc_security_group_ids = [module.my_sg.id]
   iam_instance_profile   = data.aws_iam_instance_profile.my_ssm_profile.name
-  user_data              = templatefile("userdata.sh", {})
 
-  tags = {
-    Name = "tf-server-1"
-  }
+  user_data = templatefile("userdata.sh", {})
+  tags      = { Name = "tf-server-public" }
 }
-resource "aws_instance" "my_server_2" {
+
+data "aws_ssm_parameter" "token" {
+  name = "/devops-bootcamp-2026/tunnel-token"
+}
+
+module "my_server_private" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 6.0"
+
+  name                   = "tf-server-private"
   ami                    = data.aws_ami.my_ami.id
   instance_type          = "t3.micro"
   subnet_id              = module.my_vpc.private_subnets[0]
+  create_security_group  = false
   vpc_security_group_ids = [module.my_sg.id]
   iam_instance_profile   = data.aws_iam_instance_profile.my_ssm_profile.name
 
-  tags = {
-    Name = "tf-server-2"
-  }
+  user_data = templatefile("userdata-tunnel.sh", {
+    tunnel_token = data.aws_ssm_parameter.token.value
+  })
+
+  tags = { Name = "tf-server-private" }
 }
