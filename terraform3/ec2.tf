@@ -18,6 +18,7 @@ resource "aws_instance" "my_server_1" {
   subnet_id              = module.my_vpc.public_subnets[0]
   vpc_security_group_ids = [module.my_sg.id]
   iam_instance_profile   = data.aws_iam_instance_profile.my_ssm_profile.name
+  user_data              = templatefile("userdata.sh", {})
 
   tags = {
     Name = "tf-server-1"
