@@ -7,10 +7,9 @@ terraform {
     }
   }
   backend "s3" {
-    bucket       = "bootcamp-2026-safwan-643254130249-ap-southeast-1-an"
+    bucket       = "bootcamp-2026-nama-anda"
     key          = "terraform3/terraform.tfstate"
-    region       = "ap-southeast-1"
-    use_lockfile = true
+    #.....
   }
 }
 

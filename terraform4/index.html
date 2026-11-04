@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kad Pelajar — DevOps Bootcamp 2026</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  /* kad */
+  .card {
+    width: 100%;
+    max-width: 340px;
+    padding: 32px 28px;
+    text-align: center;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .04);
+    box-shadow: 0 20px 40px -22px rgba(0, 0, 0, .9);
+    animation: fade-in .8s ease-out both;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(129, 140, 248, .5);
+    box-shadow: 0 30px 50px -22px rgba(99, 102, 241, .55);
+  }
+
+  /* lencana: gradient + denyut lembut */
+  .badge {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+
+  .label {
+    margin: 0 0 14px;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+  }
+  h1 {
+    margin: 0 0 6px;
+    font-size: 22px;
+  }
+  .cohort {
+    margin: 0;
+    font-size: 14px;
+    color: #94a3b8;
+  }
+  .role {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #c7d2fe;
+    background: rgba(99, 102, 241, .18);
+    border: 1px solid rgba(99, 102, 241, .35);
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, .55); }
+    50%      { box-shadow: 0 0 0 14px rgba(99, 102, 241, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .badge { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="badge">S</div>
+    <p class="label">DevOps Bootcamp 2026</p>
+    <h1>Safwan</h1>
+    <p class="cohort">Kohort 2026</p>
+    <span class="role">Peserta</span>
+  </main>
+</body>
+</html>
