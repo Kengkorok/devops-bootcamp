@@ -12,8 +12,8 @@ module "my_server_rackula" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 6.4"
 
-  name      = "tf-server-rackula"
-  ami       = data.aws_ami.my_ami.id
+  name = "tf-server-rackula"
+  ami  = data.aws_ami.my_ami.id
   # t3.micro = 2 vCPU / 1 GB RAM. Container Rackula ada limit 128M (UI) + 64M (API).
   instance_type          = "t3.micro"
   subnet_id              = module.my_vpc.public_subnets[0]

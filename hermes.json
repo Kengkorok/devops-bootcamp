@@ -1,0 +1,8 @@
+{
+  "mcp": {
+    "terraform": {
+      "type": "local",
+      "command": ["docker", "run", "-i", "--rm", "hashicorp/terraform-mcp-server"]
+    }
+  }
+}
