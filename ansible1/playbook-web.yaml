@@ -1,0 +1,20 @@
+- name: Sediakan web server
+  hosts: nodes
+  become: yes
+  tasks:
+    - name: Pasang nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Hidupkan servis nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Tulis index.html
+      copy:
+        content: "Ini {{ inventory_hostname }}\n"
+        dest: /var/www/html/index.html
