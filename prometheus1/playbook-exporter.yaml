@@ -1,0 +1,5 @@
+- name: Pasang node_exporter
+  hosts: nodes
+  become: true
+  roles:
+    - prometheus.prometheus.node_exporter

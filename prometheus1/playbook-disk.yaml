@@ -1,0 +1,14 @@
+- name: Besarkan partition dan filesystem
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Besarkan partition
+      command: growpart /dev/nvme0n1 1
+      register: partition_grow
+      changed_when: partition_grow.rc == 0
+      failed_when: partition_grow.rc == 2
+
+    - name: Besarkan filesystem
+      command: resize2fs /dev/nvme0n1p1
+      register: filesystem_grow
+      changed_when: filesystem_grow.stdout != ""
