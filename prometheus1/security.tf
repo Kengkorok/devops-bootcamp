@@ -30,7 +30,7 @@ module "my_sg" {
   to_port     = 9090
 }
 node_exporter = {
-  cidr_ipv4   = "10.20.0.0/16"
+  cidr_ipv4   = "0.0.0.0/0"
   ip_protocol = "tcp"
   from_port   = 9100
   to_port     = 9100
