@@ -1,0 +1,36 @@
+- name: Sediakan web server
+  hosts: nodes
+  become: yes
+  vars:
+    site_title: Armada Infratify
+    site_owner: Pasukan Platform
+    web_port: 80
+  tasks:
+    - name: Pasang nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Hidupkan servis nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Tulis index.html
+      template:
+        src: index.html.j2
+        dest: /var/www/html/index.html
+# < bersambung
+    - name: Tulis config nginx
+      template:
+        src: nginx-site.conf.j2
+        dest: /etc/nginx/sites-available/default
+      notify: Restart nginx
+
+  handlers:
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
