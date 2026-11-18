@@ -1,0 +1,15 @@
+- name: Pasang Prometheus
+  hosts: node1
+  become: true
+  vars:
+    prometheus_scrape_configs:
+      - job_name: prometheus
+        static_configs:
+          - targets: ['localhost:9090']
+      - job_name: node_exporter
+        static_configs:
+          - targets:
+              - '10.20.1.169:9100'
+              - '10.20.1.192:9100'
+  roles:
+    - prometheus.prometheus.prometheus
